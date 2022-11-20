@@ -21,6 +21,11 @@
 ## 挑戦内容
 
 - `Appointment.js` はファイル名を変更する必要があるのか？
+
+> ルートとなるコンポーネントの名称とファイル名は合わせたほうが良い
+>
+> ここでは `AppointmentsDayView` がルートコンポーネントである
+
 - `Appointment` コンポーネントに下記を表示する
   - lastName
   - phoneNumber
