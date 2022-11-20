@@ -3,6 +3,6 @@ export const toContainText = (
   expectedText: string
 ) => {
   return {
-    pass: true,
+    pass: received.textContent.includes(expectedText),
   };
 };
