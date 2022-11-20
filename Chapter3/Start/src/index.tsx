@@ -1,7 +1,10 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
+import { createRoot } from "react-dom/client";
 import { AppointmentsDayView } from "./AppointmentsDayView";
 import { sampleAppointments } from "./sampleData";
-ReactDOM.createRoot(document.getElementById("root")).render(
+
+const root = document.getElementById("root")!;
+
+createRoot(root).render(
   <AppointmentsDayView appointments={sampleAppointments} />
 );

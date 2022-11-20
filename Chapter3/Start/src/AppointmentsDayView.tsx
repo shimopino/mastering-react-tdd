@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const appointmentTimeOfDay = (startsAt) => {
+const appointmentTimeOfDay = (startsAt: number) => {
   const [h, m] = new Date(startsAt).toTimeString().split(":");
   return `${h}:${m}`;
 };
@@ -11,6 +11,12 @@ export const Appointment = ({
   stylist,
   notes,
   startsAt,
+}: {
+  customer: { firstName: string; lastName: string; phoneNumber: string };
+  service: string;
+  stylist: string;
+  notes: string;
+  startsAt: number;
 }) => {
   return (
     <div>
@@ -45,7 +51,17 @@ export const Appointment = ({
   );
 };
 
-export const AppointmentsDayView = ({ appointments }) => {
+export const AppointmentsDayView = ({
+  appointments,
+}: {
+  appointments: {
+    customer: { firstName: string; lastName: string; phoneNumber: string };
+    service: string;
+    stylist: string;
+    notes: string;
+    startsAt: number;
+  }[];
+}) => {
   const [selectedAppointment, setSelectedAppointment] = useState(0);
 
   return (

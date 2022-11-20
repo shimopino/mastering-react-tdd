@@ -1,15 +1,15 @@
 import { faker } from "@faker-js/faker";
 
-const unique = (value, index, self) => {
+const unique = <T>(value: T, index: number, self: T[]) => {
   return self.indexOf(value) === index;
 };
 
-const pickRandom = (arr) => {
+const pickRandom = <T>(arr: T[]) => {
   return arr[Math.floor(Math.random() * arr.length)];
 };
 
 const today = new Date();
-const at = (hours) => today.setHours(hours, 0);
+const at = (hours: number) => today.setHours(hours, 0);
 
 const stylists = [0, 1, 2, 3, 4, 5, 6]
   .map(() => faker.name.firstName())
