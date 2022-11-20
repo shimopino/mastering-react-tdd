@@ -1,0 +1,15 @@
+{
+  "name": "finish",
+  "version": "1.0.0",
+  "description": "この章ではサンプルアプリケーションの環境を 0 から構築していくため、 `create-react-app` などのツールを使用せずに、インストールから 1 つ 1 つ実施していく。",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.3.1"
+  }
+}
