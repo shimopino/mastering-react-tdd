@@ -11,7 +11,7 @@ export const toContainText = (
       "toContainText",
       "element",
       printExpected(expectedText),
-      {}
+      { isNot: pass }
     );
   };
 
