@@ -44,6 +44,7 @@ describe("AppointmentDaysView", () => {
     { startsAt: today.setHours(12, 0), customer: { firstName: "Ashley" } },
     { startsAt: today.setHours(13, 0), customer: { firstName: "Jordan" } },
   ];
+  const secondButton = () => elements("button")[1] as HTMLButtonElement;
 
   beforeEach(() => {
     initializeReactContainer();
@@ -108,5 +109,13 @@ describe("AppointmentDaysView", () => {
     // @ts-expect-error TODO: ジェネリクスが効いていないため型エラーを無視する
     click(button);
     expect(document.body).toContainText("Jordan");
+  });
+
+  it("renders toggled style button when appointment selected", () => {
+    // @ts-expect-error 型エラーを一旦無視
+    render(<AppointmentsDayView appointments={twoAppointments} />);
+
+    click(secondButton());
+    expect(secondButton().className).toContain("toggled");
   });
 });
