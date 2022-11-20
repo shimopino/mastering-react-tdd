@@ -21,3 +21,7 @@ export const render = (component: ReactNode) => {
     createRoot(container).render(component);
   });
 };
+
+export const click = (element: HTMLButtonElement) => {
+  act(() => element.click());
+};

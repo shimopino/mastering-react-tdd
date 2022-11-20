@@ -100,7 +100,7 @@ describe("AppointmentDaysView", () => {
     render(<AppointmentsDayView appointments={twoAppointments} />);
 
     const button = document.querySelectorAll("button")[1];
-    act(() => button.click());
+    click(button);
     expect(document.body.textContent).toContain("Jordan");
   });
 });
