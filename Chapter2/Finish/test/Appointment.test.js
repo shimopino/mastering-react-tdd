@@ -79,9 +79,6 @@ describe("AppointmentDaysView", () => {
     render(<AppointmentsDayView appointments={twoAppointments} />);
 
     const listChildren = document.querySelectorAll("ol > li");
-
-    console.log(listChildren);
-
     expect(listChildren).toHaveLength(2);
   });
 });
