@@ -43,6 +43,12 @@ describe("Appointment", () => {
 });
 
 describe("AppointmentDaysView", () => {
+  const today = new Date();
+  const twoAppointments = [
+    { startsAt: today.setHours(12, 0) },
+    { startsAt: today.setHours(13, 0) },
+  ];
+
   let container;
 
   beforeEach(() => {
@@ -70,12 +76,6 @@ describe("AppointmentDaysView", () => {
   });
 
   it("renders an li for each appointment", () => {
-    const today = new Date();
-    const twoAppointments = [
-      { startsAt: today.setHours(12, 0) },
-      { startsAt: today.setHours(13, 0) },
-    ];
-
     render(<AppointmentsDayView appointments={twoAppointments} />);
 
     const listChildren = document.querySelectorAll("ol > li");
@@ -83,12 +83,6 @@ describe("AppointmentDaysView", () => {
   });
 
   it("renders the time of each appointment", () => {
-    const today = new Date();
-    const twoAppointments = [
-      { startsAt: today.setHours(12, 0) },
-      { startsAt: today.setHours(13, 0) },
-    ];
-
     render(<AppointmentsDayView appointments={twoAppointments} />);
 
     const listChildren = document.querySelectorAll("li");
