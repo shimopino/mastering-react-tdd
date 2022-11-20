@@ -1,6 +1,14 @@
 import React from "react";
 import { Appointment, AppointmentsDayView } from "../src/AppointmentsDayView";
-import { render, initializeReactContainer, click } from "./reactTestExtensions";
+import {
+  render,
+  initializeReactContainer,
+  click,
+  element,
+  elements,
+  textOf,
+  typesOf,
+} from "./reactTestExtensions";
 
 // package.jsonの設定が効いていなかったため、直接指定する
 // @ts-expect-error React用の設定
@@ -44,13 +52,13 @@ describe("AppointmentDaysView", () => {
   it("renders a div with the right id", () => {
     render(<AppointmentsDayView appointments={[]} />);
 
-    expect(document.querySelector("div#appointmentsDayView")).not.toBeNull();
+    expect(element("div#appointmentsDayView")).not.toBeNull();
   });
 
   it("renders an ol element to display appointments", () => {
     render(<AppointmentsDayView appointments={[]} />);
 
-    const listElement = document.querySelector("ol");
+    const listElement = element("ol");
     expect(listElement).not.toBeNull();
   });
 
@@ -58,7 +66,7 @@ describe("AppointmentDaysView", () => {
     // @ts-expect-error 型エラーを無視
     render(<AppointmentsDayView appointments={twoAppointments} />);
 
-    const listChildren = document.querySelectorAll("ol > li");
+    const listChildren = elements("ol > li");
     expect(listChildren).toHaveLength(2);
   });
 
@@ -66,9 +74,7 @@ describe("AppointmentDaysView", () => {
     // @ts-expect-error 型エラーを無視
     render(<AppointmentsDayView appointments={twoAppointments} />);
 
-    const listChildren = document.querySelectorAll("li");
-    expect(listChildren[0]).toContainText("12:00");
-    expect(listChildren[1]).toContainText("13:00");
+    expect(textOf(elements("li"))).toEqual(["12:00", "13:00"]);
   });
 
   it("initially shows a message saying there no appointments today", () => {
@@ -90,16 +96,16 @@ describe("AppointmentDaysView", () => {
     // @ts-expect-error 型エラーを無視
     render(<AppointmentsDayView appointments={twoAppointments} />);
 
-    const buttons = document.querySelectorAll("li > button");
-    expect(buttons).toHaveLength(2);
-    expect((buttons[0] as HTMLButtonElement).type).toEqual("button");
+    const buttons = elements("li > button") as NodeListOf<HTMLButtonElement>;
+    expect(typesOf(buttons)).toEqual(["button", "button"]);
   });
 
   it("renders another appointment when selected", () => {
     // @ts-expect-error 型エラーを無視
     render(<AppointmentsDayView appointments={twoAppointments} />);
 
-    const button = document.querySelectorAll("button")[1];
+    const button = elements("button")[1];
+    // @ts-expect-error TODO: ジェネリクスが効いていないため型エラーを無視する
     click(button);
     expect(document.body).toContainText("Jordan");
   });

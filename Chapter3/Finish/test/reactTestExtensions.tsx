@@ -25,3 +25,21 @@ export const render = (component: ReactNode) => {
 export const click = (element: HTMLButtonElement) => {
   act(() => element.click());
 };
+
+export const element = (selector: string) => document.querySelector(selector);
+
+export const elements = <T extends keyof HTMLElementTagNameMap | string>(
+  selector: T
+) => document.querySelectorAll(selector);
+
+export const typesOf = (elements: NodeListOf<HTMLButtonElement>) => {
+  const textContents: (string | null)[] = [];
+  elements.forEach((element) => textContents.push(element.type));
+  return textContents;
+};
+
+export const textOf = (elements: NodeListOf<Element>) => {
+  const textContents: (string | null)[] = [];
+  elements.forEach((element) => textContents.push(element.textContent));
+  return textContents;
+};
