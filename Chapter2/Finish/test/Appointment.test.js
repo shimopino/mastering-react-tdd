@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { act } from "react-dom/test-utils";
-import { Appointment } from "../src/Appointment";
+import { Appointment, AppointmentsDayView } from "../src/Appointment";
 
 // package.jsonの設定が効いていなかったため、直接指定する
 globalThis.IS_REACT_ACT_ENVIRONMENT = true;
@@ -57,7 +57,7 @@ describe("AppointmentDaysView", () => {
   };
 
   it("renders a div with the right id", () => {
-    render(<AppointmentDayView appointments={[]} />);
+    render(<AppointmentsDayView appointments={[]} />);
 
     expect(document.querySelector("div#appointmentsDayView")).not.toBeNull();
   });
