@@ -18,7 +18,7 @@ describe("Appointment", () => {
     // @ts-expect-error 型エラーを無視
     render(<Appointment customer={customer} />);
 
-    expect(document.body.textContent).toContain("Ashley");
+    expect(document.body).toContainText("Ashley");
   });
 
   it("render another customer first name", () => {
@@ -26,7 +26,7 @@ describe("Appointment", () => {
     // @ts-expect-error 型エラーを無視
     render(<Appointment customer={customer} />);
 
-    expect(document.body.textContent).toContain("Jordan");
+    expect(document.body).toContainText("Jordan");
   });
 });
 
@@ -67,14 +67,14 @@ describe("AppointmentDaysView", () => {
     render(<AppointmentsDayView appointments={twoAppointments} />);
 
     const listChildren = document.querySelectorAll("li");
-    expect(listChildren[0].textContent).toEqual("12:00");
-    expect(listChildren[1].textContent).toEqual("13:00");
+    expect(listChildren[0]).toContainText("12:00");
+    expect(listChildren[1]).toContainText("13:00");
   });
 
   it("initially shows a message saying there no appointments today", () => {
     render(<AppointmentsDayView appointments={[]} />);
 
-    expect(document.body.textContent).toContain(
+    expect(document.body).toContainText(
       "There are no appointments scheduled for today."
     );
   });
@@ -83,7 +83,7 @@ describe("AppointmentDaysView", () => {
     // @ts-expect-error 型エラーを無視
     render(<AppointmentsDayView appointments={twoAppointments} />);
 
-    expect(document.body.textContent).toContain("Ashley");
+    expect(document.body).toContainText("Ashley");
   });
 
   it("has a button element in each li", () => {
@@ -101,6 +101,6 @@ describe("AppointmentDaysView", () => {
 
     const button = document.querySelectorAll("button")[1];
     click(button);
-    expect(document.body.textContent).toContain("Jordan");
+    expect(document.body).toContainText("Jordan");
   });
 });
