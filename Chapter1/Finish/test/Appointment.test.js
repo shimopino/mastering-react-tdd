@@ -15,7 +15,7 @@ describe("Appointment", () => {
     const container = document.createElement("div");
     // 特定のDOMイベントが、要素がドキュメントツリーの一部である場合にのみ
     // 登録されるため、Documentに生成したDOMを所属させる
-    document.body.appendChild(container);
+    document.body.replaceChildren(container);
 
     // React18から render 関数は非同期になっているため、
     // DOMを修正する前にテストが終了してしまわないように
@@ -27,7 +27,7 @@ describe("Appointment", () => {
     expect(document.body.textContent).toContain("Ashley");
   });
 
-  it("render another customer first name", () => {
+  it.skip("render another customer first name", () => {
     const customer = { firstName: "Jordan" };
     const component = <Appointment customer={customer} />;
     const container = document.createElement("div");
