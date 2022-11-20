@@ -95,4 +95,12 @@ describe("AppointmentDaysView", () => {
     expect(listChildren[0].textContent).toEqual("12:00");
     expect(listChildren[1].textContent).toEqual("13:00");
   });
+
+  it("initially shows a message saying there no appointments today", () => {
+    render(<AppointmentsDayView appointments={[]} />);
+
+    expect(document.body.textContent).toContain(
+      "There are no appointments scheduled for today."
+    );
+  });
 });
