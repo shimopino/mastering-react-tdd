@@ -1,23 +1,12 @@
-import React, { ReactNode } from "react";
-import ReactDOM from "react-dom/client";
-import { act } from "react-dom/test-utils";
+import React from "react";
 import { Appointment, AppointmentsDayView } from "../src/AppointmentsDayView";
-import { container, initializeReactContainer } from "./reactTestExtensions";
+import { render, initializeReactContainer, click } from "./reactTestExtensions";
 
 // package.jsonの設定が効いていなかったため、直接指定する
 // @ts-expect-error React用の設定
 globalThis.IS_REACT_ACT_ENVIRONMENT = true;
 
 describe("Appointment", () => {
-  const render = (component: ReactNode) => {
-    // React18から render 関数は非同期になっているため、
-    // DOMを修正する前にテストが終了してしまわないように
-    // 非同期レンダリングが完了するまで一時停止するヘルパー関数を実行
-    act(() => {
-      ReactDOM.createRoot(container).render(component);
-    });
-  };
-
   beforeEach(() => {
     initializeReactContainer();
   });
@@ -51,12 +40,6 @@ describe("AppointmentDaysView", () => {
   beforeEach(() => {
     initializeReactContainer();
   });
-
-  const render = (component: ReactNode) => {
-    act(() => {
-      ReactDOM.createRoot(container).render(component);
-    });
-  };
 
   it("renders a div with the right id", () => {
     render(<AppointmentsDayView appointments={[]} />);
