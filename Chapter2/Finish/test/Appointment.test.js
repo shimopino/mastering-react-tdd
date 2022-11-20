@@ -45,8 +45,8 @@ describe("Appointment", () => {
 describe("AppointmentDaysView", () => {
   const today = new Date();
   const twoAppointments = [
-    { startsAt: today.setHours(12, 0) },
-    { startsAt: today.setHours(13, 0) },
+    { startsAt: today.setHours(12, 0), customer: { firstName: "Ashley" } },
+    { startsAt: today.setHours(13, 0), customer: { firstName: "Jordan" } },
   ];
 
   let container;
@@ -96,5 +96,11 @@ describe("AppointmentDaysView", () => {
     expect(document.body.textContent).toContain(
       "There are no appointments scheduled for today."
     );
+  });
+
+  it("selects the first appointment by default with firstName", () => {
+    render(<AppointmentsDayView appointments={twoAppointments} />);
+
+    expect(document.body.textContent).toContain("Ashley");
   });
 });
