@@ -22,6 +22,7 @@ const config = {
   plugins: ["react", "@typescript-eslint"],
   rules: {
     "@typescript-eslint/no-var-requires": "off",
+    "no-control-regex": "off",
   },
 };
 
