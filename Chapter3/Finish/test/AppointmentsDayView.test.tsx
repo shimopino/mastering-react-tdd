@@ -2,14 +2,13 @@ import React, { ReactNode } from "react";
 import ReactDOM from "react-dom/client";
 import { act } from "react-dom/test-utils";
 import { Appointment, AppointmentsDayView } from "../src/AppointmentsDayView";
+import { container, initializeReactContainer } from "./reactTestExtensions";
 
 // package.jsonの設定が効いていなかったため、直接指定する
 // @ts-expect-error React用の設定
 globalThis.IS_REACT_ACT_ENVIRONMENT = true;
 
 describe("Appointment", () => {
-  let container: Element;
-
   const render = (component: ReactNode) => {
     // React18から render 関数は非同期になっているため、
     // DOMを修正する前にテストが終了してしまわないように
@@ -20,10 +19,7 @@ describe("Appointment", () => {
   };
 
   beforeEach(() => {
-    container = document.createElement("div");
-    // 特定のDOMイベントが、要素がドキュメントツリーの一部である場合にのみ
-    // 登録されるため、Documentに生成したDOMを所属させる
-    document.body.replaceChildren(container);
+    initializeReactContainer();
   });
 
   it("renders the customer first name", () => {
@@ -52,11 +48,8 @@ describe("AppointmentDaysView", () => {
     { startsAt: today.setHours(13, 0), customer: { firstName: "Jordan" } },
   ];
 
-  let container: Element;
-
   beforeEach(() => {
-    container = document.createElement("div");
-    document.body.replaceChildren(container);
+    initializeReactContainer();
   });
 
   const render = (component: ReactNode) => {
