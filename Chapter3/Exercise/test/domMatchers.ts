@@ -1,4 +1,5 @@
 import { toContainText } from "./matchers/toContainText";
+import { toHaveClass } from "./matchers/toHaveClass";
 
 /**
  * やり方は下記の公式ページを参照したほうがいいかも
@@ -9,10 +10,12 @@ declare global {
   namespace jest {
     interface Matchers<R> {
       toContainText(expected: string): R;
+      toHaveClass(expected: string): R;
     }
   }
 }
 
 expect.extend({
   toContainText,
+  toHaveClass,
 });

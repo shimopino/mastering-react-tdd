@@ -116,6 +116,6 @@ describe("AppointmentDaysView", () => {
     render(<AppointmentsDayView appointments={twoAppointments} />);
 
     click(secondButton());
-    expect(secondButton().className).toContain("toggled");
+    expect(secondButton()).toHaveClass("toggled");
   });
 });
