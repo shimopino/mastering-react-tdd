@@ -10,10 +10,6 @@ import {
   typesOf,
 } from "./reactTestExtensions";
 
-// package.jsonの設定が効いていなかったため、直接指定する
-// @ts-expect-error React用の設定
-globalThis.IS_REACT_ACT_ENVIRONMENT = true;
-
 describe("Appointment", () => {
   beforeEach(() => {
     initializeReactContainer();
