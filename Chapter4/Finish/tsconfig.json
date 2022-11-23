@@ -5,13 +5,13 @@
     // ソースマップを有効化
     "sourceMap": true,
     // TSはECMAScript 5に変換
-    "target": "ES5",
+    "target": "ES2015",
     // TSのモジュールはES Modulesとして出力
     "module": "ESNext",
     // JSXの書式を有効に設定
     "jsx": "react",
     "moduleResolution": "node",
-    "lib": ["ESNext", "DOM"],
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "allowSyntheticDefaultImports": true,
     // Jestを動かすために必要となった
     "esModuleInterop": true

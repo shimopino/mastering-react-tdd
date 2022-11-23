@@ -69,7 +69,11 @@ export const AppointmentsDayView = ({
       <ol>
         {appointments.map((appointment, index) => (
           <li key={appointment.startsAt}>
-            <button type="button" onClick={() => setSelectedAppointment(index)}>
+            <button
+              type="button"
+              className={index === selectedAppointment ? "toggled" : ""}
+              onClick={() => setSelectedAppointment(index)}
+            >
               {appointmentTimeOfDay(appointment.startsAt)}
             </button>
           </li>
