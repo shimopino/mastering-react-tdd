@@ -43,3 +43,5 @@ export const textOf = (elements: NodeListOf<Element>) => {
   elements.forEach((element) => textContents.push(element.textContent));
   return textContents;
 };
+
+export const form = (id?: string) => element("form");
