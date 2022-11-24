@@ -22,4 +22,13 @@ describe("CustomForm", () => {
     expect(field.tagName).toEqual("INPUT");
     expect(field.type).toEqual("text");
   });
+
+  it("includes the existing value for the first time", () => {
+    const customer = { firstName: "Ashley" };
+    render(<CustomForm original={customer} />);
+
+    // @ts-expect-error 最終的にラベルでの取得に変更する
+    const field = (form() as HTMLFormElement).elements.firstName;
+    expect(field.value).toEqual("Ashley");
+  });
 });
