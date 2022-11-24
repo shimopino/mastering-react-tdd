@@ -7,14 +7,18 @@ describe("CustomForm", () => {
     initializeReactContainer();
   });
 
+  const blankCustomer = {
+    firstName: "",
+  };
+
   it("renders a form", () => {
-    render(<CustomForm />);
+    render(<CustomForm original={blankCustomer} />);
 
     expect(form()).not.toBeNull();
   });
 
   it("renders the first name field as a text box", () => {
-    render(<CustomForm />);
+    render(<CustomForm original={blankCustomer} />);
 
     // @ts-expect-error 最終的にラベルでの取得に変更する
     const field = (form() as HTMLFormElement).elements.firstName;
